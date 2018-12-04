@@ -32,10 +32,13 @@ from network import TextOnly, top1_acc
 
 opt = Option('./config.json')
 if six.PY2:
-    cate1 = json.loads(open('../cate1.json').read())
+    cate1 = json.loads(open('../kakao_comp_data/cate1.json').read())
 else:
-    cate1 = json.loads(open('../cate1.json', 'rb').read().decode('utf-8'))
-DEV_DATA_LIST = ['../dev.chunk.01']
+    cate1 = json.loads(open('../kakao_comp_data/cate1.json', 'rb').read().decode('utf-8'))
+DEV_DATA_LIST = ['../kakao_comp_data/dev.chunk.01']
+DEV_DATA_LIST = ['./data/train/data.h5py']
+
+period = 10
 
 
 class Classifier():
@@ -144,7 +147,7 @@ class Classifier():
         self.logger.info('# of dev samples: %s' % dev['cate'].shape[0])
 
         checkpoint = ModelCheckpoint(self.weight_fname, monitor='val_loss',
-                                     save_best_only=True, mode='min', period=10)
+                                     save_best_only=True, mode='min', period=period)
 
         textonly = TextOnly()
         model = textonly.get_model(self.num_classes)
