@@ -35,11 +35,15 @@ if six.PY2:
     cate1 = json.loads(open('../category.json').read())
 else:
     cate1 = json.loads(open('../category.json', 'rb').read().decode('utf-8'))
-DEV_DATA_LIST = ['../kakao_comp_data/dev.chunk.01']
-DEV_DATA_LIST = ['./data/train/data.h5py']
+DEV_DATA_LIST = ['../dev.chunk.01']
+# DEV_DATA_LIST = ['./data/train/data.h5py']
 
 period = 10
 
+"""
+opt.batch_size
+opt.num_epochs
+"""
 
 class Classifier():
     def __init__(self):
