@@ -32,9 +32,9 @@ from network import TextOnly, top1_acc
 
 opt = Option('./config.json')
 if six.PY2:
-    cate1 = json.loads(open('../kakao_comp_data/cate1.json').read())
+    cate1 = json.loads(open('../category.json').read())
 else:
-    cate1 = json.loads(open('../kakao_comp_data/cate1.json', 'rb').read().decode('utf-8'))
+    cate1 = json.loads(open('../category.json', 'rb').read().decode('utf-8'))
 DEV_DATA_LIST = ['../kakao_comp_data/dev.chunk.01']
 DEV_DATA_LIST = ['./data/train/data.h5py']
 
